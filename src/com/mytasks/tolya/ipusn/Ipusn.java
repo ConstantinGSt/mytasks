@@ -3,8 +3,10 @@ package com.mytasks.tolya.ipusn;
 import java.util.Scanner;
 
 public class Ipusn {
-	static int income;
-	static int expense;
+	static int allIncome;
+	//static int income;
+	static int allExpense;
+	//static int expense;
 	static String end;
 	static int variant;
 	public static void Menu() {
@@ -15,11 +17,23 @@ public class Ipusn {
 		System.out.println("Пример: 1 <Enter>");
 		System.out.println("Для прекращения работы в программе введите \"end\"");
 	}
+	public static void addIncome(int income) {
+		allIncome = + income;
+	}
+	public static void addExpense(int expense) {
+		allExpense = + expense;
+	}
+	public static void taxSelection(int allEncome, int allExpense) {
+		
+	}
 	
 	public static void main(String[] args) {
 		
 		Scanner scan = new Scanner(System.in);
-				
+//		public static int addIncome(int income) {
+//			income = scan.nextInt();
+//			return allIncome = allIncome + income;
+//		}		
 		do {
 			Menu();
 //			income = scan.nextInt();
@@ -27,20 +41,21 @@ public class Ipusn {
 			if(scan.hasNextInt()) {
 				variant = scan.nextInt();
 				if(variant == 1) {
-					addIncome();
+					addIncome(scan.nextInt());
 					break; 
 				} else if(variant == 2) {
-					addExpense();
+					addExpense(scan.nextInt());
 					break;
 				} else if(variant == 3) {
-					taxSelection();
+					
 					break;
 				}
 			} else if (scan.hasNextLine()) {
 				end = scan.nextLine();
 			}
 			
-		} while ("end".equals(end) == false);
+		} while ("end".equals(end) != true);
 		 scan.close();
 	}	
+	
 }
