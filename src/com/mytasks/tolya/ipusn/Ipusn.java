@@ -9,30 +9,30 @@ public class Ipusn {
 	static int usn2;
 	static String end;
 	static int variant;
-	
+
 	public static void main(String[] args) {
-		
+
 		Scanner scan = new Scanner(System.in);
-	
+
 		do {
 			Menu();
-			if(scan.hasNextInt()) {
+			if (scan.hasNextInt()) {
 				variant = scan.nextInt();
-				if(variant == 1) {
+				if (variant == 1) {
 					addIncome(scan.nextInt());
-				} else if(variant == 2) {
+				} else if (variant == 2) {
 					addExpense(scan.nextInt());
-				} else if(variant == 3) {
+				} else if (variant == 3) {
 					taxSelection();
 				}
 			} else if (scan.hasNextLine()) {
 				end = scan.nextLine();
 			}
-			
+
 		} while ("end".equals(end) != true);
-		 scan.close();
+		scan.close();
 	}
-	
+
 	public static void Menu() {
 		System.out.println("Выберите операцию и введие ее номер:");
 		System.out.println("1. Добавить новый доход");
@@ -41,25 +41,25 @@ public class Ipusn {
 		System.out.println("Пример: 1 <Enter>");
 		System.out.println("Для прекращения работы в программе введите \"end\"");
 	}
-	
+
 	public static void addIncome(int income) {
 		allIncome += income;
 	}
-	
+
 	public static void addExpense(int expense) {
 		allExpense += expense;
 	}
-	
+
 	public static void taxSelection() {
 		usn1 = allIncome * 6 / 100;
-		usn2 = (allIncome - allExpense) * 15 / 100; 
-		if(usn1 < usn2) {
+		usn2 = (allIncome - allExpense) * 15 / 100;
+		if (usn1 < usn2) {
 			System.out.println("Мы советуем вам УСН доходы");
 			System.out.println("Ваш налог составит: " + usn1 + " рублей");
 			int economy = usn2 - usn1;
 			System.out.println("Налог на другой системе: " + usn2 + " рублей");
 			System.out.println("Экономия: " + economy + " рублей");
-		} else if(usn2 < usn1) {
+		} else if (usn2 < usn1) {
 			System.out.println("Мы советуем вам УСН доходы минус расходы");
 			System.out.println("Ваш налог составит: " + usn2 + " рублей");
 			int economy = usn1 - usn2;
