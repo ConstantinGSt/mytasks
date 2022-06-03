@@ -4,11 +4,35 @@ import java.util.Scanner;
 
 public class Ipusn {
 	static int allIncome;
-	//static int income;
+	static int usn1;
 	static int allExpense;
-	//static int expense;
+	static int usn2;
 	static String end;
 	static int variant;
+	
+	public static void main(String[] args) {
+		
+		Scanner scan = new Scanner(System.in);
+	
+		do {
+			Menu();
+			if(scan.hasNextInt()) {
+				variant = scan.nextInt();
+				if(variant == 1) {
+					addIncome(scan.nextInt());
+				} else if(variant == 2) {
+					addExpense(scan.nextInt());
+				} else if(variant == 3) {
+					taxSelection();
+				}
+			} else if (scan.hasNextLine()) {
+				end = scan.nextLine();
+			}
+			
+		} while ("end".equals(end) != true);
+		 scan.close();
+	}
+	
 	public static void Menu() {
 		System.out.println("Выберите операцию и введие ее номер:");
 		System.out.println("1. Добавить новый доход");
@@ -17,45 +41,30 @@ public class Ipusn {
 		System.out.println("Пример: 1 <Enter>");
 		System.out.println("Для прекращения работы в программе введите \"end\"");
 	}
+	
 	public static void addIncome(int income) {
-		allIncome = + income;
+		allIncome += income;
 	}
+	
 	public static void addExpense(int expense) {
-		allExpense = + expense;
-	}
-	public static void taxSelection(int allEncome, int allExpense) {
-		
+		allExpense += expense;
 	}
 	
-	public static void main(String[] args) {
-		
-		Scanner scan = new Scanner(System.in);
-//		public static int addIncome(int income) {
-//			income = scan.nextInt();
-//			return allIncome = allIncome + income;
-//		}		
-		do {
-			Menu();
-//			income = scan.nextInt();
-//			expense = scan.nextInt();
-			if(scan.hasNextInt()) {
-				variant = scan.nextInt();
-				if(variant == 1) {
-					addIncome(scan.nextInt());
-					break; 
-				} else if(variant == 2) {
-					addExpense(scan.nextInt());
-					break;
-				} else if(variant == 3) {
-					
-					break;
-				}
-			} else if (scan.hasNextLine()) {
-				end = scan.nextLine();
-			}
-			
-		} while ("end".equals(end) != true);
-		 scan.close();
-	}	
-	
+	public static void taxSelection() {
+		usn1 = allIncome * 6 / 100;
+		usn2 = (allIncome - allExpense) * 15 / 100; 
+		if(usn1 < usn2) {
+			System.out.println("Мы советуем вам УСН доходы");
+			System.out.println("Ваш налог составит: " + usn1 + " рублей");
+			int economy = usn2 - usn1;
+			System.out.println("Налог на другой системе: " + usn2 + " рублей");
+			System.out.println("Экономия: " + economy + " рублей");
+		} else if(usn2 < usn1) {
+			System.out.println("Мы советуем вам УСН доходы минус расходы");
+			System.out.println("Ваш налог составит: " + usn2 + " рублей");
+			int economy = usn1 - usn2;
+			System.out.println("Налог на другой системе: " + usn1 + " рублей");
+			System.out.println("Экономия: " + economy + " рублей\n");
+		}
+	}
 }
