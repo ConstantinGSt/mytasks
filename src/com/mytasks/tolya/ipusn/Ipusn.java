@@ -43,16 +43,22 @@ public class Ipusn {
 	}
 
 	public static void addIncome(int income) {
+		System.out.print("Добавьте новый доход");
 		allIncome += income;
 	}
 
 	public static void addExpense(int expense) {
+		System.out.print("Добавьте новый расход");
 		allExpense += expense;
 	}
 
 	public static void taxSelection() {
-		usn1 = allIncome * 6 / 100;
-		usn2 = (allIncome - allExpense) * 15 / 100;
+		if((allIncome * 6 / 100) >= 0) {
+			usn1 = allIncome * 6 / 100;
+		}	else usn1 = 0;
+		if((allIncome - allExpense) * 15 / 100 >= 0) {
+			usn2 = (allIncome - allExpense) * 15 / 100;
+		} else usn2 = 0;
 		if (usn1 < usn2) {
 			System.out.println("Мы советуем вам УСН доходы");
 			System.out.println("Ваш налог составит: " + usn1 + " рублей");
@@ -65,6 +71,8 @@ public class Ipusn {
 			int economy = usn1 - usn2;
 			System.out.println("Налог на другой системе: " + usn1 + " рублей");
 			System.out.println("Экономия: " + economy + " рублей\n");
+		} else if(usn1 == usn2) {
+			System.out.println("Налог равен по любой системе налогообложения. Ваш налог составит: " + usn1 + " рублей");
 		}
 	}
 }
