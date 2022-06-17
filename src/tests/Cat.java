@@ -1,4 +1,4 @@
-package tests;
+﻿package tests;
 
 import java.util.ArrayList;
 public class Cat{
@@ -24,10 +24,10 @@ public class Cat{
 	
 	   System.out.println(secondCat);
 	
-//			String letters = "abcdef";
-//			System.out.println(letters.length());
-//			System.out.println(letters.charAt(3));
-//			System.out.println(letters.charAt(6));
+//	String letters = "abcdef";
+//	System.out.println(letters.length());
+//	System.out.println(letters.charAt(3));
+//	System.out.println(letters.charAt(6));
 		}
 
 }
