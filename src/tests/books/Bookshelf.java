@@ -17,7 +17,7 @@ public class Bookshelf {
     				System.out.print("[]");	
     				freeInShelf++;
     			}
-    		}
+    		} 
     		System.out.println("\n" + "Книг на полке: " + booksInShelf + "\n" 
     				+ "Свободное место для " + freeInShelf + " книг"  );
     	} else if(inpitMenuOption == 2) {
@@ -33,7 +33,7 @@ public class Bookshelf {
     			}
     		}
     		
-    	} else if(inpitMenuOption == 3) {
+    	} else if(inpitMenuOption == 3) { // долгая пауза в  java пора возвращаться по тихой, SQL не убежит думаю
 
     	} else if(inpitMenuOption == 4) {
 
@@ -41,6 +41,6 @@ public class Bookshelf {
 
     	} else if(inpitMenuOption == 6) {
 
-    	}
+    	} 
     }
 }
