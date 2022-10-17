@@ -1,8 +1,8 @@
-package tests;
+package com.mytasks.tolya.massive;
 
 import java.util.Scanner;
 
-/* 
+/*
 Купи слона
 */
 
@@ -29,7 +29,6 @@ class Solution {
 			buyElephant(answer, scanner);
 		} catch (Exception e) {
 			System.out.println(answer);
-			throw e;
 		}
 	}
 }
