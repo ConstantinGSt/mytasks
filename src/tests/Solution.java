@@ -1,35 +1,35 @@
 package tests;
 
+import java.io.IOException;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Scanner;
 
 /* 
-Купи слона
+Перепутанные байты
 */
 
-class Solution {
-
-	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
-		buyElephant(null, scanner);
-	}
-
-	static void buyElephant(String answer, Scanner scanner) {
-		if (answer == null) {
-			System.out.println("Купи слона");
-		} else if (answer.toLowerCase().equals("ок")) {
-			System.out.println("Так-то лучше :) Список твоих отговорок:");
-			throw new SecurityException();
-		} else {
-			System.out.println("Все говорят \"" + answer + "\", а ты купи слона");
-		}
-
-		answer = scanner.nextLine();
-
-		try {
-			buyElephant(answer, scanner);
-		} catch (Exception e) {
-			System.out.println(answer);
-			throw e;
-		}
-	}
+public class Solution {
+    public static void main(String[] args) {
+    	String readPath = "Cat.txt";
+    	String writePath = "Cat2.txt";
+    	try (Scanner scan = new Scanner(System.in); FileInputStream inStream = new FileInputStream(readPath); 
+    			FileOutputStream outStream = new FileOutputStream(writePath)) {
+    		byte[] byteIn = inStream.readAllBytes();
+    		byte[] byteOut = new byte[byteIn.length];
+    		for(int i = 0; i < byteIn.length; i+=2) {
+    			if(i <byteIn.length) {
+    				byteOut[i] = byteIn[i+1];
+    				byteOut[i+1] = byteIn[i];
+    			} else byteOut[i] = byteIn[i];
+    		}
+    		outStream.write(byteOut);
+    	} catch(IOException e) {
+    		System.out.println("все упало");
+    	}
+    }
 }
+
