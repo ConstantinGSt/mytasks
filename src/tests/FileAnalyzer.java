@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 
@@ -23,12 +24,24 @@ public class  FileAnalyzer {
 		this.maxFilenameLength = maxFilenameLength;
 	}
 	
-	public static void createReport(String filepath) { //, String filename
-		try (Stream<Path> walk = Files.walk(Paths.get(filepath))) {
-			List lis = walk.filter(maxPathlength -> max)  //forEach(System.out::println);
+	public void createReport(String filepath, String filename) { //, String filename
+		boolean maxPathL;
+		
+		try {
+			maxPathL = getMaxPathLength() > filepath.length();
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		try (Stream<Path> walk = Files.walk(Paths.get(filepath))) { //.filter(p -> p.length(getFileName()) > getMaxFilenameLength())
+			List<Path> list = walk.filter(t-> ((FileAnalyzer) t).getMaxPathLength() < filepath.length())
+					.forEach(Files.writer(filename));
+			walk.close();
 		} catch (IOException e) {
 			e.printStackTrace();
+			
 		}
+		
 	}
 	
 

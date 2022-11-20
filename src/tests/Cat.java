@@ -8,9 +8,9 @@ public class Cat{
 	}
 	
 	public static void main(String[] args) {
-		
+		FileAnalyzer test = new FileAnalyzer(45, 45);
 		String path = "D:\\repository\\mytasks";
-		FileAnalyzer.createReport(path);
+		test.createReport(path, "log.txt");
 		
 //		ArrayList<Cat> cats = new ArrayList<>();
 //	    Cat thomas = new Cat("Томас");
