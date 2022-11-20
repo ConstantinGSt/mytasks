@@ -35,7 +35,8 @@ public class  FileAnalyzer {
 		}
 		try (Stream<Path> walk = Files.walk(Paths.get(filepath))) { //.filter(p -> p.length(getFileName()) > getMaxFilenameLength())
 			List<Path> list = walk.filter(t-> ((FileAnalyzer) t).getMaxPathLength() < filepath.length())
-					.forEach(Files.writer(filename));
+					.forEach(Collectors.toList());
+			walk.writer
 			walk.close();
 		} catch (IOException e) {
 			e.printStackTrace();
