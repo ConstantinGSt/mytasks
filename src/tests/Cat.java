@@ -8,7 +8,7 @@ public class Cat{
 	}
 	
 	public static void main(String[] args) {
-		FileAnalyzer test = new FileAnalyzer(45, 45);
+		FileAnalyzer test = new FileAnalyzer(55, 10);
 		String path = "D:\\repository\\mytasks";
 		test.createReport(path, "log.txt");
 		

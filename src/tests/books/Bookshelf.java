@@ -27,11 +27,8 @@ public class Bookshelf {
     			if(bookShelf[i] == null) {
     				System.out.println("Добавьте книгу в следующем формате: Автор Enter" + "\n"
     			+ "Название Enter"  + "\n" + "год издания Enter");
-    				book = new Book(autor.autor, title.book, published.book) {
-    					autor.autor = scan.nextLine();
-    					title.book = scan.nextLine();
-    					published.book = scan.nextLine();
-    				}
+    				book = new Book(scan.nextLine(), scan.nextLine(), scan.nextLine());
+    					
     			}
     		}
     	}
