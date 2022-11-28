@@ -51,13 +51,20 @@ public class Solution {
         	System.out.println(UNKNOWN_ERROR);
         } 
 
-        user.setAge(age);
-
+        if(user.setAge(age) == -1) {
+        	System.out.println(CANNOT_BE_NEGATIVE);
+        } else if(user.setAge(age) == -2) {
+        	System.out.println(CANNOT_BE_TOO_BIG);
+        } else if(user.setAge(age) != -2 && user.setAge(age) != -1 && user.setAge(age) != 0) {
+        	System.out.println(UNKNOWN_ERROR);
+        }
+        
         users.add(user);
     }
 
     static void findUserIndex(User user) {
-        //напишите тут ваш код
-        System.out.printf(FOUND, user.getName(), users.indexOf(user));
+    	if(users.indexOf(user) == -1) {
+    		System.out.printf(NOT_FOUND, user.getName());
+    	} else System.out.printf(FOUND, user.getName(), users.indexOf(user));
     }
 }
