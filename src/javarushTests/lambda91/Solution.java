@@ -20,6 +20,11 @@ public class Solution {
         	return obj2.length() - obj1.length();
         }; // ; - не обходима тк тут не только анонимный класс но и создание переменной
         
+        Comparator<String> comparator2 = (obj1, obj2) ->
+        obj1.length() - obj2.length();
+        
+        Collections.sort(list, (obj1, obj2) ->  obj1.length() - obj2.length());
+        
         Collections.sort(list, comparator);
         for(String sort: list) {
         System.out.println(sort);
